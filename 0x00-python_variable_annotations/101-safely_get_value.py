@@ -15,10 +15,10 @@ def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
     Args:
         dct (Mapping): The input mapping (dictionary-like object).
         key (Any): The key to retrieve the value for.
-        default (Def, optional): The default value to return if the key is not found. Defaults to None.
+        default (Def, optional): The default value to return.
 
     Returns:
-        Res: The value corresponding to the key if found, otherwise the default value.
+        Res: The value corresponding to the key if found.
     '''
     if key in dct:
         return dct[key]
