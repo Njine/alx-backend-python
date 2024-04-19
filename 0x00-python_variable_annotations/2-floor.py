@@ -10,6 +10,6 @@ def floor(n: float) -> int:
         n (float): The input floating-point number.
 
     Returns:
-        int: The floor of the input number, rounded down to the nearest integer.
+        int: Floor of input number, rounded down to the nearest integer.
     '''
     return int(n)

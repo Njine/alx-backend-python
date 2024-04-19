@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-'''Module for computing the sum of a list of integers and floating-point numbers.
+'''Module for computing  sum of a list of integers and floating-point digits.
 '''
 from typing import List, Union
 
 
 def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
-    '''Computes the sum of the input list of integers and floating-point numbers.
+    '''Computes the sum of input list of integers and floating-point digits.
 
     Args:
         mxd_lst (List[Union[int, float]]): The list of integers and floats.
