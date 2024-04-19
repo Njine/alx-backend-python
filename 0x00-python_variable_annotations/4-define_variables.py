@@ -2,4 +2,7 @@
 '''Task 4's module.
 '''
 
-a, pi, i_understand_annotations, school = 1, 3.14, True, 'Holberton'
+a: int = 1
+pi: float = 3.14
+i_understand_annotations: bool = True
+school: str = 'Holberton'
