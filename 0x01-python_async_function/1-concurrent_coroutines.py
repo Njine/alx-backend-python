@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-''' 
-Module to define an async function that runs wait_random multiple times and returns the results in ascending order.
-'''
+'''Module for creating asynchronous tasks.'''
+
 import asyncio
 from typing import List
 
 # Importing the wait_random coroutine from the previous script
 wait_random = __import__('0-basic_async_syntax').wait_random
+
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
     '''Executes wait_random n times and returns the delays in ascending order.
@@ -28,7 +28,7 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     for i in range(1, len(wait_times)):
         key = wait_times[i]
         j = i - 1
-        # Move elements of wait_times that are greater than key, to one position ahead
+        # Move elements of wait_times that are > key, to one position ahead
         # of their current position
         while j >= 0 and wait_times[j] > key:
             wait_times[j + 1] = wait_times[j]
