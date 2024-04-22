@@ -7,7 +7,7 @@ from concurrent_coroutines import wait_n  # Importing from 1-concurrent_coroutin
 
 
 def measure_time(n: int, max_delay: int) -> float:
-    '''Calculates the average execution time for 'wait_n'.
+    '''Calculate mean execution time for 'wait_n'.
 
     Args:
         n (int): Number of asynchronous tasks to spawn.
