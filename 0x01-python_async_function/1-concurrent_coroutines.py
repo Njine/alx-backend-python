@@ -1,27 +1,38 @@
 #!/usr/bin/env python3
-'''Module for measuring the runtime of asynchronous operations.'''
-
+''' 
+Module to define an async function that runs wait_random multiple times and returns the results in ascending order.
+'''
 import asyncio
-import time
-from concurrent_coroutines import wait_n  # Importing from 1-concurrent_coroutines
+from typing import List
 
+# Importing the wait_random coroutine from the previous script
+wait_random = __import__('0-basic_async_syntax').wait_random
 
-def measure_time(n: int, max_delay: int) -> float:
-    '''Calculate mean execution time for 'wait_n'.
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    '''Executes wait_random n times and returns the delays in ascending order.
 
-    Args:
-        n (int): Number of asynchronous tasks to spawn.
-        max_delay (int): Maximum delay for each task.
+    Parameters:
+    n (int): The number of times to run wait_random
+    max_delay (int): The maximum delay to pass to wait_random
 
     Returns:
-        float: Average time taken by the tasks.
+    List[float]: A list of the resulting delay times in ascending order
     '''
-    # Start the timer
-    start_time = time.time()
+    # List to hold coroutine results
+    wait_times = await asyncio.gather(
+        *[wait_random(max_delay) for _ in range(n)]
+    )
 
-    # Execute the asynchronous coroutine 'wait_n'
-    asyncio.run(wait_n(n, max_delay))
+    # We will manually sort the list without using sort()
+    # Sorting with insertion method
+    for i in range(1, len(wait_times)):
+        key = wait_times[i]
+        j = i - 1
+        # Move elements of wait_times that are greater than key, to one position ahead
+        # of their current position
+        while j >= 0 and wait_times[j] > key:
+            wait_times[j + 1] = wait_times[j]
+            j -= 1
+        wait_times[j + 1] = key
 
-    # Calculate the total elapsed time and return the average
-    elapsed_time = time.time() - start_time
-    return elapsed_time / n
+    return wait_times
